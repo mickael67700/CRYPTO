@@ -104,7 +104,6 @@ public class rsaKeyManagement {
     /*
      *Reading a public key from a file.
      */
-
     public static PublicKey readPublicKey(String fileName){
         BigInteger modulo = null;
         BigInteger exposant = null;
