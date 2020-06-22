@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
  * For example: java rsaKeysGenerator privateKey.bin publicKey.bin
  * The private key is saved in 'private.bin' and the public key is saved in 'public.bin'.
  */
-public class rsaKeysGenerator {
+public class RsaKeysGenerator {
     /* Main method.
      * @param args[0] name of the file in which to save the private key
      * @param args[1] name of the file in which to save the public key
@@ -35,9 +35,9 @@ public class rsaKeysGenerator {
         /* Key pair generation */
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
         /* Private key backup */
-        rsaKeyManagement.privateKeyBackup(keyPair.getPrivate(), args[0]);
+        RsaKeyManagement.privateKeyBackup(keyPair.getPrivate(), args[0]);
         /* Public key backup */
-        rsaKeyManagement.publicKeyBackup(keyPair.getPublic(), args[1]);
+        RsaKeyManagement.publicKeyBackup(keyPair.getPublic(), args[1]);
         System.out.println("*** Keys saved ***");
     }
 }

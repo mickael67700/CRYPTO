@@ -11,7 +11,7 @@ import java.security.spec.RSAPublicKeySpec;
 /*
  *This class contains a set of methods for saving RSA keys to a file or loading them from a file.
  */
-public class rsaKeyManagement {
+public class RsaKeyManagement {
     /*
      *Saving the public key to a file.
      */
