@@ -1,6 +1,7 @@
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
+import java.util.Scanner;
 
 /*
  * Class to generate a private/public key pair and to generate the
@@ -9,18 +10,7 @@ import java.security.NoSuchAlgorithmException;
  * The private key is saved in 'private.bin' and the public key is saved in 'public.bin'.
  */
 public class RsaKeysGenerator {
-    /* Main method.
-     * @param args[0] name of the file in which to save the private key
-     * @param args[1] name of the file in which to save the public key
-     */
-    public static void main(String[] args) {
-        /* Checking the arguments */
-        if(args.length != 2) {
-            System.err.println("Utilisation :");
-            System.err.println("  java rsaKeyGenerator private public\n where:\n=> private: name of the file that will contain the private key\n" +
-                    "=> public: name of the file that will contain the public key");
-            System.exit(-1);
-        }
+    public static void generateKeys() {
         /* RSA generator */
         KeyPairGenerator keyPairGenerator = null;
         try {
@@ -35,9 +25,13 @@ public class RsaKeysGenerator {
         /* Key pair generation */
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
         /* Private key backup */
-        RsaKeyManagement.privateKeyBackup(keyPair.getPrivate(), args[0]);
+        System.out.println("File to save the private key (example: privateKey.bin) : ");
+        String privateKeyFile = new Scanner(System.in).nextLine();
+        RsaKeyManagement.privateKeyBackup(keyPair.getPrivate(), privateKeyFile);
         /* Public key backup */
-        RsaKeyManagement.publicKeyBackup(keyPair.getPublic(), args[1]);
+        System.out.println("File to save the public key (example: publicKey.bin) : ");
+        String publicKeyFile = new Scanner(System.in).nextLine();
+        RsaKeyManagement.publicKeyBackup(keyPair.getPublic(), publicKeyFile);
         System.out.println("*** Keys saved ***");
     }
 }

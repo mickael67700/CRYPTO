@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
+import java.util.Scanner;
 
 /*
  * Class for decrypting a message using a private key.
@@ -16,21 +17,21 @@ public class Decryption {
      * @param args[0] name of the file where the private key is located
      * @param args[1] message to decipher
      * */
-    public static void main(String[] args) {
-        /* Checking the arguments */
-        if(args.length != 2) {
-            System.err.println("Utilisation :");
-            System.err.println("  java Decryption privateKey message output\n where: \n" +
-                    "=> privateKey : name of the file containing the private key\n" +
-                    "=> message : decryption file ");
-            System.exit(-1);
-        }
+
+    public Decryption() {
+    }
+
+    public static void decryption() {
+        System.out.println("Filename for private key (example privateKey.bin) : ");
+        String privateKeyFile = new Scanner(System.in).nextLine();
+        System.out.println("Filename of ciphered message (example output) : ");
+        String encryptedMessageFile = new Scanner(System.in).nextLine();
         /* Private key retrieval */
-        PrivateKey privateKey = RsaKeyManagement.readingPrivateKey(args[0]);
+        PrivateKey privateKey = RsaKeyManagement.readingPrivateKey(privateKeyFile);
         /* Loading the encrypted message */
         byte[] encryptedMessage = null;
         try {
-            FileInputStream fileInputStream = new FileInputStream(args[1]);
+            FileInputStream fileInputStream = new FileInputStream(encryptedMessageFile);
             encryptedMessage = new byte[fileInputStream.available()];
             fileInputStream.read(encryptedMessage);
             fileInputStream.close();
