@@ -23,7 +23,7 @@ public class Decryption {
             System.err.println("Utilisation :");
             System.err.println("  java Decryption privateKey message output\n where: \n" +
                     "=> privateKey : name of the file containing the private key\n" +
-                    "=> message : message to cipeher");
+                    "=> message : decryption file ");
             System.exit(-1);
         }
         /* Private key retrieval */
