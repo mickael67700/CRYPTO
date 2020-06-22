@@ -2,6 +2,7 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -38,6 +39,11 @@ public class RsaKeysGenerator {
         System.out.println("File to save the public key (example: publicKey.bin) : ");
         String publicKeyFile = new Scanner(System.in).nextLine();
         RsaKeyManagement.publicKeyBackup(keyPair.getPublic(), publicKeyFile);
-        System.out.println("*** Keys saved ***\nPrivate Key : " + privateKeyFile + "\nPublic Key  : " + publicKeyFile);
+
+        /* Display informations */
+        System.out.println("*** Keys saved ***\n\nPrivate Key : " + privateKeyFile + "\nPublic Key  : " + publicKeyFile);
+        System.out.println("\nAlgorithm public key: " + keyPair.getPublic().getAlgorithm() + "\nAlgorithm private key: " + keyPair.getPrivate().getAlgorithm());
+        System.out.println(keyPair.getPublic().toString() + "\n");
+        System.out.println(keyPair.getPrivate().toString() + "\n");
     }
 }
