@@ -9,8 +9,7 @@ import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.RSAPublicKeySpec;
 
 /*
-*Class for saving and loading private or public keys
-*from files.
+ *This class contains a set of methods for saving RSA keys to a file or loading them from a file.
  */
 public class rsaKeyManagement {
     /*
