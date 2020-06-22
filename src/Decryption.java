@@ -36,6 +36,7 @@ public class Decryption {
         try {
             FileInputStream fileInputStream = new FileInputStream(args[1]);
             encryptedMessage = new byte[fileInputStream.available()];
+            fileInputStream.read(encryptedMessage);
             fileInputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
