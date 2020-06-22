@@ -2,13 +2,11 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import java.io.BufferedReader;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -20,7 +18,7 @@ public class Encryption {
     }
 
     public static void encryption() throws IOException {
-        System.out.println("Message to Encryption : ");
+        System.out.println("text to Encryption : ");
         String messageToCipher = new Scanner(System.in).nextLine();
         System.out.println("Filename for public key (example publicKey.bin) : ");
         String publicKeyFile = new Scanner(System.in).nextLine();
