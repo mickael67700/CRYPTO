@@ -1,0 +1,1 @@
+Les jeux de caractères supportés par la version internationale sont dans le fichier charsets.jar
