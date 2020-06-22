@@ -13,11 +13,6 @@ import java.util.Scanner;
  * Class for decrypting a message using a private key.
  */
 public class Decryption {
-    /* Main method.
-     * @param args[0] name of the file where the private key is located
-     * @param args[1] message to decipher
-     * */
-
     public Decryption() {
     }
 
