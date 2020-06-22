@@ -2,8 +2,9 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import java.io.FileDescriptor;
+import java.io.BufferedReader;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -18,7 +19,7 @@ public class Encryption {
     public Encryption() {
     }
 
-    public static void encryption() {
+    public static void encryption() throws IOException {
         System.out.println("Message to Encryption : ");
         String messageToCipher = new Scanner(System.in).nextLine();
         System.out.println("Filename for public key (example publicKey.bin) : ");
@@ -40,11 +41,20 @@ public class Encryption {
         /* Backup encrypted message */
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(backupFile);
+            assert bytes != null;
             fileOutputStream.write(bytes);
             fileOutputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Encrypted message backup in '" + backupFile+"' file");
+        /*Reading encrypted file lines*/
+        //System.setProperty( "file.encoding", "UTF8" );
+        System.out.println("Encrypted message backup in '" + backupFile+"' file\nCiphered message: \n");
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(backupFile));
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            System.out.println(line);
+        }
+        bufferedReader.close();
     }
 }
