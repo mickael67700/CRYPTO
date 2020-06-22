@@ -4,10 +4,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 /*
- * Class to generate a private/public key pair and to generate the
- * save to files. The names of the output files must be specified on the command line.
- * For example: java rsaKeysGenerator privateKey.bin publicKey.bin
- * The private key is saved in 'private.bin' and the public key is saved in 'public.bin'.
+ * Class to generate a private/public key pair and to generate the save to files.
  */
 public class RsaKeysGenerator {
     public static void generateKeys() {
@@ -16,8 +13,8 @@ public class RsaKeysGenerator {
         try {
             /* Choice of rsa algorithm */
             keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-            /* 2048 bits or 1024 or 512 */
-            keyPairGenerator.initialize(2048);
+            /* 2048 bits or 3072 or 15360 */
+            keyPairGenerator.initialize(3072);
         } catch (NoSuchAlgorithmException e) {
             System.out.println("Error during initialization of the process key generator : " + e);
             System.exit(-1);
