@@ -1,8 +1,10 @@
 import java.io.*;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
+import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.RSAPublicKeySpec;
 
 /*
@@ -10,6 +12,9 @@ import java.security.spec.RSAPublicKeySpec;
 *from files.
  */
 public class rsaKeyManagement {
+    /*
+     *Saving the public key to a file.
+     */
     public static void publicKeyBackup(PublicKey publicKey, String fileName){
         RSAPublicKeySpec specification = null;
         try {
@@ -23,6 +28,32 @@ public class rsaKeyManagement {
             ObjectOutputStream file = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(fileName)));
             file.writeObject(specification.getModulus());
             file.writeObject(specification.getPublicExponent());
+            file.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found : " + e);
+            System.exit(-1);
+        } catch (IOException e) {
+            System.out.println("Error when saving the key : " + e);
+            System.exit(-1);
+        }
+    }
+
+    /*
+     *Saving the private key in a file.
+     */
+    public static void privateKeyBackup(PrivateKey privateKey, String fileName){
+       RSAPrivateKeySpec specification = null;
+        try {
+            KeyFactory factory = KeyFactory.getInstance("RSA");
+            specification = factory.getKeySpec(privateKey, RSAPrivateKeySpec.class);
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        try {
+            ObjectOutputStream file = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(fileName)));
+            file.writeObject(specification.getModulus());
+            file.writeObject(specification.getPrivateExponent());
             file.close();
         } catch (FileNotFoundException e) {
             System.out.println("File not found : " + e);
