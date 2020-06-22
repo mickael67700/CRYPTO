@@ -24,9 +24,6 @@ public class Decryption {
             System.err.println("  java Decryption privateKey message output\n where: \n" +
                     "=> privateKey : name of the file containing the private key\n" +
                     "=> message : ");
-
-            System.err.println("      - clePrivee : nom du fichier qui contient la clé privée");
-            System.err.println("      - message   : name of the file containing the message to be deciphered");
             System.exit(-1);
         }
         /* Private key retrieval */
