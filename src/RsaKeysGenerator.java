@@ -28,10 +28,12 @@ public class RsaKeysGenerator {
         long lEndTime = Instant.now().toEpochMilli();
         long result = lEndTime - lStartTime;
         System.out.println("Keys generated in milliseconds : " + result);
+
         /* Private key backup */
         System.out.println("File to save the private key (example: privateKey.bin) : ");
         String privateKeyFile = new Scanner(System.in).nextLine();
         RsaKeyManagement.privateKeyBackup(keyPair.getPrivate(), privateKeyFile);
+
         /* Public key backup */
         System.out.println("File to save the public key (example: publicKey.bin) : ");
         String publicKeyFile = new Scanner(System.in).nextLine();
